@@ -11,13 +11,13 @@ public class ReflectionQuestion {
 
         Properties properties = new Properties();
         properties.load(new FileReader("src\\re.properties"));
-        String classpath = properties.get("classfullpath").toString();
+        String classpath = properties.get("classpath").toString();
         String method = properties.get("method").toString();
         System.out.println("classpath:"+classpath);
         System.out.println("method:"+method);
         Class<?> aClass = Class.forName(classpath);
         Object o = aClass.newInstance();
-        Method method1 = aClass.getMethod(method);
+        Method method1 = aClass.getMethod(method);//方法对象调用类的对象
         method1.invoke(o) ;
     }
 }
