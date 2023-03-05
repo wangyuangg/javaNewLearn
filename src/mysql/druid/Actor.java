@@ -58,4 +58,15 @@ public class Actor {
     public void setPhone(String phone) {
         this.phone = phone;
     }
+
+    @Override
+    public String toString() {
+        return "Actor{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", sex='" + sex + '\'' +
+                ", borndate='" + borndate + '\'' +
+                ", phone='" + phone + '\'' +
+                '}';
+    }
 }

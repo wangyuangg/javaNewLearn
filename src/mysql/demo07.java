@@ -10,9 +10,12 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class demo07 {
-    public void testQuerryMany() throws SQLException {//返回结果是多行
+    public static void main(String[] args) throws SQLException {
+        testQuerryMany();
+    }
+    public static void  testQuerryMany() throws SQLException {//返回结果是多行
         //1.获取连接
-        String sql = "select * from actor where id > ?";
+        String sql = "select * from actor where id >= ?";
         Connection connection = JDBCbyDruid.getConnection();
         //2.创建queryRunner对象
         QueryRunner queryRunner = new QueryRunner();
@@ -22,6 +25,14 @@ public class demo07 {
         List<Actor> query = queryRunner.query(connection,
                 sql,
                 new BeanListHandler<>(Actor.class), 1);
+        System.out.println("输出集合信息");
+        for (Actor actor : query) {
+            System.out.println(actor);
+        }
+        System.out.println(query.size());
+
+        //3.关闭连接
+        JDBCbyDruid.close(null, null, connection);
 
 
     }
